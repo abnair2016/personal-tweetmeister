@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: personal-tweetmeister-app
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/code/app
+      - ./requirements.txt:/code/requirements.txt
+    restart: unless-stopped
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
